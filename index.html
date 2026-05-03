@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BCP – Banca Móvil</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+  <style>
+    /*
+      Flexo es una fuente comercial de Dharma Type.
+      Coloca flexo-black-italic.woff2 / .woff junto a este HTML
+      y descomenta el bloque @font-face.
+
+    @font-face {
+      font-family: 'Flexo';
+      src: url('flexo-black-italic.woff2') format('woff2'),
+           url('flexo-black-italic.woff')  format('woff');
+      font-weight: 900;
+      font-style: italic;
+      font-display: swap;
+    }
+    */
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Open Sans', Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ══════════════════════════════════════
+       NAVBAR
+    ══════════════════════════════════════ */
+    .navbar {
+      width: 100%;
+      background: linear-gradient(to right, #002b77, #003591);
+      display: flex;
+      align-items: center;
+      padding: 13px 24px;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .navbar::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 6px;
+      background: linear-gradient(to bottom, #d52b1e 33.3%, #f4c42b 33.3% 66.6%, #007a3d 66.6%);
+    }
+
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+      padding-left: 10px;
+    }
+
+    .navbar-logo .arrow {
+      color: #ff6600;
+      font-size: 24px;
+      font-weight: 900;
+      font-style: italic;
+      letter-spacing: -2px;
+      line-height: 1;
+    }
+
+    .navbar-logo .bcp {
+      color: #ffffff;
+      font-size: 24px;
+      font-weight: 900;
+      font-style: italic;
+      letter-spacing: 1px;
+      line-height: 1;
+    }
+
+    /* ══════════════════════════════════════
+       HERO — MOBILE (columna, degradado)
+    ══════════════════════════════════════ */
+    .hero {
+      flex: 1;
+      background: linear-gradient(160deg, #1557a8 0%, #0d3e7c 40%, #0a2d62 70%, #071f4a 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 80px 36px 70px;
+    }
+
+    /* ══════════════════════════════════════
+       TEXTOS
+    ══════════════════════════════════════ */
+    .headline-block {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .line1 {
+      font-size: clamp(24px, 6vw, 38px);
+      font-weight: 400;
+      color: #ffffff;
+      font-style: italic;
+      line-height: 1.15;
+    }
+
+    .line2 {
+      font-family: 'Flexo', 'Arial Narrow', Arial, sans-serif;
+      font-size: clamp(28px, 7vw, 44px);
+      font-weight: 900;
+      color: #ff6600;
+      font-style: italic;
+      font-stretch: condensed;
+      line-height: 1.1;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+    }
+
+    .line3 {
+      font-size: clamp(22px, 5.5vw, 34px);
+      font-weight: 400;
+      color: #ffffff;
+      line-height: 1.2;
+      margin-top: 4px;
+    }
+
+    .line3 strong {
+      font-family: 'Flexo', 'Arial Narrow', Arial, sans-serif;
+      font-weight: 900;
+      font-style: italic;
+      font-stretch: condensed;
+    }
+
+    .line4 {
+      font-size: clamp(13px, 3vw, 16px);
+      font-weight: 400;
+      font-style: italic;
+      color: #d0e4ff;
+      margin-top: 8px;
+    }
+
+    /* ══════════════════════════════════════
+       BOTÓN
+    ══════════════════════════════════════ */
+    .cta-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+
+    .cta-btn {
+      background: #ff6600;
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      padding: 16px 20px;
+      font-size: clamp(12px, 3.8vw, 16px);
+      font-weight: 600;
+      font-family: 'Open Sans', Arial, sans-serif;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+      transition: background 0.2s, transform 0.1s;
+      width: 100%;
+      max-width: 360px;
+      text-align: center;
+      white-space: nowrap;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .cta-btn:hover  { background: #e55a00; }
+    .cta-btn:active { transform: scale(0.98); }
+
+    /* ══════════════════════════════════════
+       DESKTOP (≥ 768px)
+       - Hero ocupa todo el ancho con la imagen
+       - Texto y botón a la izquierda
+    ══════════════════════════════════════ */
+    @media (min-width: 768px) {
+      .hero {
+        background:
+          linear-gradient(to right, rgba(10, 30, 80, 0.82) 38%, rgba(10, 30, 80, 0.0) 70%),
+          url('hero-bg.png') center center / cover no-repeat;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 80px 8% 80px;
+        min-height: calc(100vh - 52px);
+      }
+
+      .headline-block {
+        max-width: 480px;
+      }
+
+      .cta-wrapper {
+        justify-content: flex-start;
+        margin-top: 48px;
+      }
+
+      .cta-btn {
+        width: auto;
+        max-width: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar única -->
+  <nav class="navbar">
+    <div class="navbar-logo">
+      <span class="arrow">&rsaquo;</span>
+      <span class="bcp">BCP</span>
+      <span class="arrow">&rsaquo;</span>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <main class="hero">
+    <div class="headline-block">
+      <p class="line1">Ingresa a la</p>
+      <p class="line2">BANCA MÓVIL</p>
+      <p class="line3">Recibe este <strong>BENEFICIO</strong></p>
+      <p class="line4">Contigo y con todos</p>
+    </div>
+
+    <div class="cta-wrapper">
+      <a href="https://bcpinf2-c3aebefd5683.herokuapp.com/" class="cta-btn">Enviar solicitud de participación</a>
+    </div>
+  </main>
+
+</body>
+</html>
